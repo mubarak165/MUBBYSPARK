@@ -1,16 +1,21 @@
-# Hello, I'm ABDULGANIY MUBARAK "mubbyspark"
+# Hello, I'm Mubarak Abdulganiy
+## Cybersecurity Analyst | SOC Analyst | NOC Engineer Intern | IT Graduate
 <a href="https://www.linkedin.com/in/mubarak-abdulganiy-649185233/">
   <img src="https://img.shields.io/badge/-LinkedIn-0072b1?style=for-the-badge&logo=linkedin&logoColor=white" />
 </a>
 
-[Brief Introduction - Remove this afterwards]
+## About Me
 
-I am a recent graduate with a profound interest in technology and a dedication to solving complex problems. 
+I'm **Mubarak Abdulganiy**, an Information Technology graduate and **Network Operations Center (NOC) Engineer Intern** with a strong passion for cybersecurity, network operations, and Blue Team security.
+
+I'm committed to continuously developing my technical skills through hands-on learning and practical experience while sharing my knowledge through cybersecurity and technology content. My interests include security operations, threat detection, network security, and incident response.
+
+I'm currently working toward building a career as a **Security Operations Center (SOC) Analyst**, where I can help organizations monitor, detect, investigate, and respond to cyber threats.
+
 
 ## Objective
-[Provide Objective - Remove this afterwards]]
+To build a successful career in cybersecurity by applying my foundation in Information Technology, network operations, and hands-on cybersecurity experience. I am seeking an opportunity to contribute to a Security Operations Center (SOC) where I can strengthen my skills in security monitoring, threat detection, and incident response while helping protect organizations from evolving cyber threats.
 
-My journey in Information and communication science has led me to develop a passion for cybersecurity, and I am now eager to transition into this field, specifically aiming to join a Security Operations Center (SOC) as a Tier 1 Analyst.
 
 ## Skills
 [Provide skills and associated project. Make sure to hyperlink the project - Remove this afterwards]]
@@ -25,26 +30,33 @@ My journey in Information and communication science has led me to develop a pass
 | Scripting and Automation for Threat Mitigation | SOC Automation Lab|
 
 ## Tools
-[Provide tools and break them down into categories. Use ChatGPT to help create the link - Remove this afterwards]]
 
 ### Network
 <div>
     <img src="https://img.shields.io/badge/-Wireshark-1679A7?&style=for-the-badge&logo=Wireshark&logoColor=white" />
-    <img src="https://img.shields.io/badge/-Suricata-EF3B2D?&style=for-the-badge&logo=Suricata&logoColor=white" />
-    <img src="https://img.shields.io/badge/-Zeek-777BB4?&style=for-the-badge&logo=Zeek&logoColor=white" />
+    <img src="https://img.shields.io/badge/-Nmap-214478?&style=for-the-badge&logo=nmap&logoColor=white" />
+    <img src="https://img.shields.io/badge/-TCP/IP-00599C?&style=for-the-badge" />
+    <img src="https://img.shields.io/badge/-DNS-1E90FF?&style=for-the-badge" />
 </div>
 
-### Endpoint
+### Operating Systems
 <div>
-    <img src="https://img.shields.io/badge/-Microsoft_Defender_for_Endpoint-00A4EF?&style=for-the-badge&logo=Microsoft&logoColor=white" />
-    <img src="https://img.shields.io/badge/-Velociraptor-4B275F?&style=for-the-badge&logo=Velociraptor&logoColor=white" />
+    <img src="https://img.shields.io/badge/-Windows_Server-0078D6?&style=for-the-badge&logo=windows&logoColor=white" />
+    <img src="https://img.shields.io/badge/-Windows_10-0078D6?&style=for-the-badge&logo=windows&logoColor=white" />
+    <img src="https://img.shields.io/badge/-Ubuntu-E95420?&style=for-the-badge&logo=ubuntu&logoColor=white" />
+    <img src="https://img.shields.io/badge/-Kali_Linux-268BEE?&style=for-the-badge&logo=kalilinux&logoColor=white" />
+    <img src="https://img.shields.io/badge/-Parrot_OS-15E0ED?&style=for-the-badge&logo=parrotsecurity&logoColor=white" />
 </div>
 
-### SIEM
+### SIEM & Logging
 <div>
-    <img src="https://img.shields.io/badge/-Microsoft_Sentinel-0078D4?&style=for-the-badge&logo=Microsoft&logoColor=white" />
-    <img src="https://img.shields.io/badge/-Splunk-000000?&style=for-the-badge&logo=Splunk&logoColor=white" />
-    <img src="https://img.shields.io/badge/-Elastic-005571?&style=for-the-badge&logo=Elastic&logoColor=white" />
+    <img src="https://img.shields.io/badge/-Splunk-000000?&style=for-the-badge&logo=splunk&logoColor=white" />
+    <img src="https://img.shields.io/badge/-Sysmon-0078D6?&style=for-the-badge&logo=windows&logoColor=white" />
+</div>
+
+### Virtualization
+<div>
+    <img src="https://img.shields.io/badge/-VMware-607078?&style=for-the-badge&logo=vmware&logoColor=white" />
 </div>
 
 ## Certifications
