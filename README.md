@@ -23,11 +23,10 @@ To build a successful career in cybersecurity by applying my foundation in Infor
 | Skill                                         | Associated Project         |
 |-----------------------------------------------|----------------------------|
 | Home SOC Lab: AD + Sysmon + Splunk Detection Pipeline | <a href="https://github.com/mubarak165/Detection-lab">Detection Lab</a>|
-| Detecting & Investigating a Malicious Email Attachment | <a href="https://medium.com/@mubarakabdulganiy3/investigating-soc114-malicious-attachment-detected-a-phishing-alert-letsdefend-walkthrough-87a93bd846d5?source=user_profile_page---------0-------------c895b8e38bc6----------------------">Detection Lab</a>|
-| Security Automation with Shuffle SOAR         | SOC Automation Lab|
-| Incident Response Planning and Execution      | SOC Automation Lab|
-| Case Management with TheHive                  | SOC Automation Lab|
-| Scripting and Automation for Threat Mitigation | SOC Automation Lab|
+| Detecting & Investigating a Malicious Email Attachment | <a href="https://medium.com/@mubarakabdulganiy3/investigating-soc114-malicious-attachment-detected-a-phishing-alert-letsdefend-walkthrough-87a93bd846d5?source=user_profile_page---------0-------------c895b8e38bc6----------------------">Lab</a>|
+| Incident Response: Phishing Link Reported via Telegram  | <a href="https://medium.com/@mubarakabdulganiy3/soc-incident-report-suspected-phishing-url-via-telegram-685eb824d9a7?source=user_profile_page---------1-------------c895b8e38bc6----------------------">Lab</a>|
+|Suspicious Excel File Investigation (Malware Analysis)   |  <a href="https://medium.com/@mubarakabdulganiy3/lets-defend-soc-137-lab-responding-to-a-malicious-file-alert-with-siem-f7a68fef024f?source=user_profile_page---------3-------------c895b8e38bc6----------------------"> Lab</a>|
+| Responding to a Malicious File Alert Using SIEM     |  <a href="https://medium.com/@mubarakabdulganiy3/lets-defend-soc-137-lab-responding-to-a-malicious-file-alert-with-siem-f7a68fef024f?source=user_profile_page---------3-------------c895b8e38bc6----------------------">Lab</a>|
 
 ## Tools
 
@@ -54,6 +53,12 @@ To build a successful career in cybersecurity by applying my foundation in Infor
     <img src="https://img.shields.io/badge/-Sysmon-0078D6?&style=for-the-badge&logo=windows&logoColor=white" />
 </div>
 
+### Attack Simulation / Adversary Emulation
+<div>
+    <img src="https://img.shields.io/badge/-Atomic_Red_Team-D22128?&style=for-the-badge&logo=powershell&logoColor=white" />
+    <img src="https://img.shields.io/badge/-Crowbar-000000?&style=for-the-badge&logo=hackthebox&logoColor=white" />
+</div>
+
 ### Virtualization
 <div>
     <img src="https://img.shields.io/badge/-VMware-607078?&style=for-the-badge&logo=vmware&logoColor=white" />
@@ -70,5 +75,9 @@ To build a successful career in cybersecurity by applying my foundation in Infor
 </div>
 
 ## Projects
-- Detection Lab
+- Home SOC Lab: AD + Sysmon + Splunk Detection Pipeline
+- Investigating a Malicious Email Attachment (Phishing Alert – LetsDefend SOC114)
+- Incident Report: Suspected Phishing URL via Telegram
+- Suspicious XLS File Investigation (LetsDefend SOC138)
+- Responding to a Malicious File Alert Using SIEM (LetsDefend SOC137)
 - SOC Automation Project
