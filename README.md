@@ -23,7 +23,7 @@ To build a successful career in cybersecurity by applying my foundation in Infor
 | Skill                                         | Associated Project         |
 |-----------------------------------------------|----------------------------|
 | Home SOC Lab: AD + Sysmon + Splunk Detection Pipeline | <a href="https://github.com/mubarak165/Detection-lab">Detection Lab</a>|
-| Network Traffic Monitoring and Attack Detection | <a href="https://google.com">Detection Lab</a>|
+| Detecting & Investigating a Malicious Email Attachment | <a href="https://medium.com/@mubarakabdulganiy3/investigating-soc114-malicious-attachment-detected-a-phishing-alert-letsdefend-walkthrough-87a93bd846d5?source=user_profile_page---------0-------------c895b8e38bc6----------------------">Detection Lab</a>|
 | Security Automation with Shuffle SOAR         | SOC Automation Lab|
 | Incident Response Planning and Execution      | SOC Automation Lab|
 | Case Management with TheHive                  | SOC Automation Lab|
