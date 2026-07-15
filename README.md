@@ -65,13 +65,13 @@ To build a successful career in cybersecurity by applying my foundation in Infor
 </div>
 
 ## Certifications
-[Provide certifications that you have obtained. Use ChatGPT to help create the link - Remove this afterwards]]
 <div>
-<img src="https://img.shields.io/badge/-Security%2B-FF0000?&style=for-the-badge&logo=CompTIA&logoColor=white" />
-<img src="https://img.shields.io/badge/-Network%2B-007ACC?&style=for-the-badge&logo=CompTIA&logoColor=white" />
-<img src="https://img.shields.io/badge/-A%2B-4D4D4D?&style=for-the-badge&logo=CompTIA&logoColor=white" />
-<img src="https://img.shields.io/badge/-CDSA-006400?&style=for-the-badge&logoColor=white" />
-<img src="https://img.shields.io/badge/-CCD-000080?&style=for-the-badge&logoColor=white" />
+<a href="https://app.letsdefend.io/certificate/show/fcf17afc-7510-49ae-954c-388a730cbbf2"><img src="https://img.shields.io/badge/-SOC_Learning_Path-000000?&style=for-the-badge&logo=letsdefend&logoColor=white" /></a>
+<a href="https://www.linkedin.com/in/mubarak-abdulganiy-649185233/overlay/Certifications/1104378517/treasury/?profileId=ACoAADo5aVkBgddwNLvTHfhm8s-rF0lmQdl3Ys8"><img src="https://img.shields.io/badge/-HCIA_Datacom_2025-C7000B?&style=for-the-badge&logo=huawei&logoColor=white" /></a>
+<a href="https://www.linkedin.com/in/mubarak-abdulganiy-649185233/overlay/Certifications/1104176952/treasury/?profileId=ACoAADo5aVkBgddwNLvTHfhm8s-rF0lmQdl3Ys8"><img src="https://img.shields.io/badge/-HCIA_Security_2025-C7000B?&style=for-the-badge&logo=huawei&logoColor=white" /></a>
+<a href="https://forage-uploads-prod.s3.amazonaws.com/completion-certificates/9PBTqmSxAf6zZTseP/E9pA6qsdbeyEkp3ti_9PBTqmSxAf6zZTseP_4SZmYgzpd4ntiiNjS_1750119760695_completion_certificate.pdf"><img src="https://img.shields.io/badge/-Deloitte_Cybersecurity_Job_Simulation-86BC25?&style=for-the-badge&logo=deloitte&logoColor=white" /></a>
+<img src="https://img.shields.io/badge/-Joshmit_Technologies_Cybersecurity_Certificate-4D4D4D?&style=for-the-badge" />
+<img src="https://img.shields.io/badge/-Technexus_Cybersecurity_Certificate-4D4D4D?&style=for-the-badge" />
 </div>
 
 ## Projects
