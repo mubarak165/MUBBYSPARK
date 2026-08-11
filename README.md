@@ -18,7 +18,6 @@ To build a successful career in cybersecurity by applying my foundation in Infor
 
 
 ## Skills
-[Provide skills and associated project. Make sure to hyperlink the project - Remove this afterwards]]
 
 | Skill                                         | Associated Project         |
 |-----------------------------------------------|----------------------------|
