@@ -27,6 +27,7 @@ To build a successful career in cybersecurity by applying my foundation in Infor
 | Incident Response: Phishing Link Reported via Telegram  | <a href="https://medium.com/@mubarakabdulganiy3/soc-incident-report-suspected-phishing-url-via-telegram-685eb824d9a7?source=user_profile_page---------1-------------c895b8e38bc6----------------------">Lab</a>|
 |Suspicious Excel File Investigation (Malware Analysis)   |  <a href="https://medium.com/@mubarakabdulganiy3/lets-defend-soc-137-lab-responding-to-a-malicious-file-alert-with-siem-f7a68fef024f?source=user_profile_page---------3-------------c895b8e38bc6----------------------"> Lab</a>|
 | Responding to a Malicious File Alert Using SIEM     |  <a href="https://medium.com/@mubarakabdulganiy3/lets-defend-soc-137-lab-responding-to-a-malicious-file-alert-with-siem-f7a68fef024f?source=user_profile_page---------3-------------c895b8e38bc6----------------------">Lab</a>|
+| Pcap Network Analysis Report | <a href="https://github.com/mubarak165/PCAP-Network-Traffic-Analysis-Report"> Analysis report</a>
 
 ## Tools
 
