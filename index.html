@@ -1,0 +1,879 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MUBBYSPARK — Talking-Head Video Editor × Content Creator</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        dark: '#0a0a0a',
+                        charcoal: '#121212',
+                        cardBg: '#171717',
+                        accent: '#ccff00',
+                        accentHover: '#b3e600',
+                        muted: '#888888',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace']
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Google Fonts: Inter & JetBrains Mono -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            background-color: #0a0a0a;
+            color: #f3f4f6;
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+        }
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0a0a0a;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #262626;
+            border-radius: 3px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #ccff00;
+        }
+        .timeline-grid {
+            background-image: linear-gradient(to right, rgba(255,255,255,0.05) 1px, transparent 1px),
+                              linear-gradient(to bottom, rgba(255,255,255,0.05) 1px, transparent 1px);
+            background-size: 40px 40px;
+        }
+        .glow-accent {
+            box-shadow: 0 0 30px -5px rgba(204, 255, 0, 0.25);
+        }
+    </style>
+</head>
+<body class="bg-dark text-white antialiased selection:bg-accent selection:text-black">
+
+    <!-- NAVIGATION -->
+    <header class="fixed top-0 left-0 right-0 z-50 bg-dark/80 backdrop-blur-md border-b border-neutral-800/80 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <a href="#" class="group flex items-center space-x-3">
+                <div class="w-9 h-9 rounded bg-accent text-black font-black flex items-center justify-center font-mono text-sm tracking-tighter shadow-lg group-hover:scale-105 transition-transform">
+                    MS
+                </div>
+                <div>
+                    <span class="font-extrabold tracking-wider text-lg uppercase block leading-none">MUBBYSPARK</span>
+                    <span class="text-[10px] text-accent font-mono uppercase tracking-widest">Video Editor × Creator</span>
+                </div>
+            </a>
+
+            <!-- Desktop Nav Links -->
+            <nav class="hidden md:flex items-center space-x-8 font-mono text-xs uppercase tracking-widest">
+                <a href="#work" class="text-neutral-400 hover:text-accent transition-colors">Work</a>
+                <a href="#edit" class="text-neutral-400 hover:text-accent transition-colors">The Edit</a>
+                <a href="#categories" class="text-neutral-400 hover:text-accent transition-colors">Categories</a>
+                <a href="#creator" class="text-neutral-400 hover:text-accent transition-colors">Creator Mode</a>
+                <a href="#philosophy" class="text-neutral-400 hover:text-accent transition-colors">Philosophy</a>
+                <a href="#about" class="text-neutral-400 hover:text-accent transition-colors">About</a>
+            </nav>
+
+            <div class="hidden md:flex items-center space-x-4">
+                <a href="#contact" class="px-5 py-2.5 bg-accent text-black font-mono text-xs font-bold uppercase tracking-wider rounded hover:bg-accentHover transition-colors flex items-center space-x-2">
+                    <span>Let's Talk</span>
+                    <i class="fa-solid fa-arrow-right"></i>
+                </a>
+            </div>
+
+            <!-- Mobile Menu Toggle -->
+            <button id="mobile-menu-btn" class="md:hidden text-2xl text-neutral-300 hover:text-accent focus:outline-none p-2">
+                <i class="fa-solid fa-bars-staggered"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Menu Overlay -->
+        <div id="mobile-menu" class="hidden md:hidden absolute top-20 left-0 right-0 bg-charcoal border-b border-neutral-800 p-6 flex flex-col space-y-4 shadow-2xl">
+            <a href="#work" class="mobile-link font-mono text-sm uppercase tracking-wider text-neutral-300 hover:text-accent py-2 border-b border-neutral-800/50">Work</a>
+            <a href="#edit" class="mobile-link font-mono text-sm uppercase tracking-wider text-neutral-300 hover:text-accent py-2 border-b border-neutral-800/50">The Edit</a>
+            <a href="#categories" class="mobile-link font-mono text-sm uppercase tracking-wider text-neutral-300 hover:text-accent py-2 border-b border-neutral-800/50">Categories</a>
+            <a href="#creator" class="mobile-link font-mono text-sm uppercase tracking-wider text-neutral-300 hover:text-accent py-2 border-b border-neutral-800/50">Creator Mode</a>
+            <a href="#philosophy" class="mobile-link font-mono text-sm uppercase tracking-wider text-neutral-300 hover:text-accent py-2 border-b border-neutral-800/50">Philosophy</a>
+            <a href="#about" class="mobile-link font-mono text-sm uppercase tracking-wider text-neutral-300 hover:text-accent py-2 border-b border-neutral-800/50">About</a>
+            <a href="#contact" class="mobile-link px-5 py-3 bg-accent text-black font-mono text-xs font-bold uppercase tracking-wider rounded text-center">Let's Talk</a>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="relative pt-32 pb-20 md:pt-40 md:pb-32 overflow-hidden timeline-grid border-b border-neutral-800">
+        <!-- Background Ambient Glow -->
+        <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-accent/5 rounded-full blur-3xl pointer-events-none"></div>
+
+        <div class="max-w-7xl mx-auto px-6 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+                
+                <!-- Left Text Content -->
+                <div class="lg:col-span-7 space-y-6">
+                    <div class="inline-flex items-center space-x-2 px-3 py-1.5 rounded-full bg-neutral-900 border border-neutral-800 text-xs font-mono text-accent">
+                        <span class="w-2 h-2 rounded-full bg-accent animate-ping"></span>
+                        <span>AVAILABLE FOR Q2/Q3 PROJECTS</span>
+                    </div>
+
+                    <h1 class="text-4xl sm:text-6xl lg:text-7xl font-black tracking-tight uppercase leading-[1.05]">
+                        I TURN PEOPLE TALKING <br>
+                        <span class="text-transparent bg-clip-text bg-gradient-to-r from-accent via-white to-accent">INTO CONTENT PEOPLE WATCH.</span>
+                    </h1>
+
+                    <p class="text-neutral-400 text-lg sm:text-xl font-light max-w-xl">
+                        TALKING-HEAD VIDEO EDITOR × CONTENT CREATOR. I don't just cut clips. I build retention, attention, and visual rhythm.
+                    </p>
+
+                    <!-- Edit Badges / Tags -->
+                    <div class="flex flex-wrap gap-2 pt-2">
+                        <span class="px-3 py-1 bg-neutral-900 border border-neutral-800 rounded font-mono text-xs text-neutral-300">#HOOK</span>
+                        <span class="px-3 py-1 bg-neutral-900 border border-neutral-800 rounded font-mono text-xs text-neutral-300">#ZOOM</span>
+                        <span class="px-3 py-1 bg-neutral-900 border border-neutral-800 rounded font-mono text-xs text-neutral-300">#B-ROLL</span>
+                        <span class="px-3 py-1 bg-neutral-900 border border-neutral-800 rounded font-mono text-xs text-neutral-300">#CAPTION</span>
+                        <span class="px-3 py-1 bg-neutral-900 border border-neutral-800 rounded font-mono text-xs text-neutral-300">#SFX</span>
+                    </div>
+
+                    <!-- Action Buttons -->
+                    <div class="flex flex-col sm:flex-row items-stretch sm:items-center space-y-4 sm:space-y-0 sm:space-x-4 pt-4">
+                        <button onclick="openVideoModal('https://www.w3schools.com/html/mov_bbb.mp4', 'Showreel 2026')" class="px-8 py-4 bg-accent text-black font-mono text-sm font-bold uppercase tracking-wider rounded hover:bg-accentHover transition-all flex items-center justify-center space-x-3 glow-accent group">
+                          <span>WATCH THE REEL</span>
+                          <i class="fa-solid fa-play group-hover:scale-125 transition-transform"></i>
+                        </button>
+                        <a href="#contact" class="px-8 py-4 bg-neutral-900 hover:bg-neutral-800 text-white border border-neutral-700 font-mono text-sm font-semibold uppercase tracking-wider rounded transition-colors text-center">
+                          WORK WITH ME
+                        </a>
+                    </div>
+
+                    <!-- Timecode Detail -->
+                    <div class="flex items-center space-x-4 text-xs font-mono text-neutral-500 pt-2">
+                        <div class="flex items-center space-x-1.5">
+                            <i class="fa-regular fa-clock text-accent"></i>
+                            <span>TIME: 00:03:17:12</span>
+                        </div>
+                        <span>•</span>
+                        <div class="flex items-center space-x-1.5">
+                            <i class="fa-solid fa-film text-accent"></i>
+                            <span>CODEC: 4K 60FPS PRORES</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Hero Reel Card (9:16 vertical mockup) -->
+                <div class="lg:col-span-5 flex justify-center">
+                    <div class="relative w-full max-w-[320px] aspect-[9/16] bg-cardBg rounded-2xl border border-neutral-800 overflow-hidden shadow-2xl group cursor-pointer" onclick="openVideoModal('https://www.w3schools.com/html/mov_bbb.mp4', 'Hero Featured Reel')">
+                        
+                        <!-- Poster / Simulated Video Background -->
+                        <div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105" style="background-image: url('https://placehold.co/600x1066/1a1a1a/ccff00?text=MUBBYSPARK+SHOWREEL');">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+                        </div>
+
+                        <!-- Top Bar Timecode Overlay -->
+                        <div class="absolute top-4 left-4 right-4 flex justify-between items-center text-[10px] font-mono text-accent bg-black/60 px-3 py-1.5 rounded backdrop-blur-md border border-neutral-800">
+                            <span class="flex items-center space-x-1">
+                                <span class="w-1.5 h-1.5 rounded-full bg-red-500 animate-pulse"></span>
+                                <span>REC [PRORES]</span>
+                            </span>
+                            <span>00:00:24:12</span>
+                        </div>
+
+                        <!-- Center Play Icon with Hover Reaction -->
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <div class="w-16 h-16 rounded-full bg-accent/90 text-black flex items-center justify-center text-xl shadow-2xl transform group-hover:scale-110 transition-transform">
+                                <i class="fa-solid fa-play ml-1"></i>
+                            </div>
+                        </div>
+
+                        <!-- Bottom Editing Waveform & Label -->
+                        <div class="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black via-black/70 to-transparent space-y-2">
+                            <div class="flex items-center justify-between text-xs font-mono">
+                                <span class="text-white font-bold">REEL_FINAL_V4.MP4</span>
+                                <span class="text-accent">60 FPS</span>
+                            </div>
+                            <!-- Mini Waveform -->
+                            <div class="flex items-center space-x-0.5 h-6">
+                                <div class="w-1 bg-accent/40 h-3 rounded-full"></div>
+                                <div class="w-1 bg-accent h-6 rounded-full"></div>
+                                <div class="w-1 bg-accent h-4 rounded-full"></div>
+                                <div class="w-1 bg-accent/60 h-2 rounded-full"></div>
+                                <div class="w-1 bg-accent h-5 rounded-full"></div>
+                                <div class="w-1 bg-accent h-6 rounded-full"></div>
+                                <div class="w-1 bg-accent/80 h-3 rounded-full"></div>
+                                <div class="w-1 bg-accent h-4 rounded-full"></div>
+                                <div class="w-1 bg-accent/40 h-2 rounded-full"></div>
+                                <div class="w-1 bg-accent h-6 rounded-full"></div>
+                                <div class="w-1 bg-accent h-5 rounded-full"></div>
+                                <div class="w-1 bg-accent/60 h-3 rounded-full"></div>
+                            </div>
+                            <div class="text-[10px] text-neutral-400 font-mono">HOVER TO PREVIEW • CLICK TO EXPAND</div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 2 — THE EDIT -->
+    <section id="edit" class="py-24 bg-charcoal border-b border-neutral-800">
+        <div class="max-w-7xl mx-auto px-6">
+            
+            <div class="text-center max-w-2xl mx-auto space-y-4 mb-16">
+                <span class="font-mono text-xs text-accent uppercase tracking-widest px-3 py-1 bg-neutral-900 border border-neutral-800 rounded">SECTION 02 / TRANSFORMATION</span>
+                <h2 class="text-3xl sm:text-5xl font-black uppercase tracking-tight">THE EDIT</h2>
+                <p class="text-neutral-400 text-base sm:text-lg">Raw footage is only the beginning. See how ordinary talking-head recordings become magnetic short-form content.</p>
+            </div>
+
+            <!-- Before/After Interactive Comparison Box -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center bg-dark p-6 sm:p-8 rounded-2xl border border-neutral-800 shadow-2xl">
+                
+                <!-- RAW FOOTAGE SIDE -->
+                <div class="space-y-4">
+                    <div class="flex items-center justify-between font-mono text-xs">
+                        <span class="text-red-400 font-bold tracking-wider flex items-center space-x-1.5">
+                            <i class="fa-solid fa-triangle-exclamation"></i>
+                            <span>RAW FOOTAGE (BORING)</span>
+                        </span>
+                        <span class="text-neutral-500">1080p • Flat Color • Dead Air</span>
+                    </div>
+
+                    <div class="relative aspect-video bg-neutral-900 rounded-xl overflow-hidden border border-neutral-800 flex items-center justify-center group">
+                        <!-- Simulated Raw Video Still -->
+                        <div class="absolute inset-0 bg-cover bg-center grayscale opacity-50" style="background-image: url('https://placehold.co/800x450/222222/666666?text=Raw+Camera+Feed+-+No+Edits');"></div>
+                        <div class="relative z-10 text-center p-6 bg-black/70 backdrop-blur-sm rounded-lg border border-neutral-800">
+                            <p class="text-neutral-400 text-sm font-mono mb-2">"Uhm, so basically when you record a video..."</p>
+                            <span class="text-[11px] font-mono text-red-400 bg-red-950/50 px-2.5 py-1 rounded border border-red-900/50">Viewer Retention: 12%</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- EDITED FOOTAGE SIDE -->
+                <div class="space-y-4">
+                    <div class="flex items-center justify-between font-mono text-xs">
+                        <span class="text-accent font-bold tracking-wider flex items-center space-x-1.5">
+                            <i class="fa-solid fa-bolt"></i>
+                            <span>EDITED BY MUBBYSPARK</span>
+                        </span>
+                        <span class="text-accent">4K • Dynamic Captions • SFX • Pacing</span>
+                    </div>
+
+                    <div class="relative aspect-video bg-neutral-900 rounded-xl overflow-hidden border border-accent/40 shadow-xl flex items-center justify-center group">
+                        <!-- Simulated Edited Video Still -->
+                        <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('https://placehold.co/800x450/111111/ccff00?text=Mubbyspark+Edit+-+Punch-In+%26+Captions');"></div>
+                        
+                        <!-- Simulated Captions Overlay -->
+                        <div class="absolute bottom-6 left-0 right-0 flex justify-center z-10 px-4">
+                            <div class="bg-black/90 border border-accent/60 px-4 py-2 rounded-lg shadow-2xl text-center">
+                                <span class="font-black text-accent text-lg sm:text-xl uppercase tracking-wider drop-shadow-[0_2px_10px_rgba(204,255,0,0.5)]">STOP LOSING VIEWERS IN 3 SECONDS!</span>
+                            </div>
+                        </div>
+
+                        <div class="absolute top-3 right-3 z-10">
+                            <span class="text-[11px] font-mono text-black bg-accent px-2.5 py-1 rounded font-bold shadow">Retention: 89%</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Bottom Quote -->
+            <div class="mt-12 text-center">
+                <p class="font-mono text-sm sm:text-base text-neutral-300 tracking-wider">
+                    "Same person. Same story. <span class="text-accent font-bold">Different attention span.</span>"
+                </p>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- SECTION 3 — WHAT I EDIT -->
+    <section id="categories" class="py-24 bg-dark border-b border-neutral-800">
+        <div class="max-w-7xl mx-auto px-6">
+            
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-16">
+                <div class="space-y-4">
+                    <span class="font-mono text-xs text-accent uppercase tracking-widest px-3 py-1 bg-neutral-900 border border-neutral-800 rounded">SECTION 03 / EXPERTISE</span>
+                    <h2 class="text-3xl sm:text-5xl font-black uppercase tracking-tight">CONTENT THAT HAS <br>SOMETHING TO SAY.</h2>
+                </div>
+                <p class="text-neutral-400 max-w-md mt-4 md:mt-0 text-sm sm:text-base">
+                    Tailored editing frameworks designed for platforms where every second determines whether the viewer stays or scrolls.
+                </p>
+            </div>
+
+            <!-- Categories List -->
+            <div class="space-y-4">
+                
+                <!-- Category 01 -->
+                <div class="group relative bg-charcoal border border-neutral-800 hover:border-accent/60 rounded-2xl p-6 sm:p-8 transition-all duration-300 cursor-pointer overflow-hidden" onclick="openVideoModal('https://www.w3schools.com/html/mov_bbb.mp4', 'Personal Brand Editing')">
+                    <div class="absolute right-6 top-1/2 -translate-y-1/2 hidden lg:flex items-center space-x-3 opacity-0 group-hover:opacity-100 transition-opacity">
+                        <span class="font-mono text-xs text-accent">PREVIEW REEL</span>
+                        <div class="w-12 h-12 rounded-full bg-accent text-black flex items-center justify-center font-bold">
+                            <i class="fa-solid fa-play"></i>
+                        </div>
+                    </div>
+                    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 relative z-10">
+                        <div class="flex items-center space-x-6">
+                            <span class="font-mono text-xl sm:text-2xl text-accent font-black">01</span>
+                            <div>
+                                <h3 class="text-2xl sm:text-3xl font-extrabold uppercase group-hover:text-accent transition-colors">PERSONAL BRAND</h3>
+                                <p class="text-neutral-400 text-sm mt-1">Transforming founders, CEOs, and creators into authorities with high-retention social content.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center space-x-3 font-mono text-xs text-neutral-500">
+                            <span>00:17</span>
+                            <span class="w-2 h-2 rounded-full bg-accent"></span>
+                            <span class="text-neutral-300">TIKTOK / REELS / SHORTS</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Category 02 -->
+                <div class="group relative bg-charcoal border border-neutral-800 hover:border-accent/60 rounded-2xl p-6 sm:p-8 transition-all duration-300 cursor-pointer overflow-hidden" onclick="openVideoModal('https://www.w3schools.com/html/mov_bbb.mp4', 'Educational Content Editing')">
+                    <div class="absolute right-6 top-1/2 -translate-y-1/2 hidden lg:flex items-center space-x-3 opacity-0 group-hover:opacity-100 transition-opacity">
+                        <span class="font-mono text-xs text-accent">PREVIEW REEL</span>
+                        <div class="w-12 h-12 rounded-full bg-accent text-black flex items-center justify-center font-bold">
+                            <i class="fa-solid fa-play"></i>
+                        </div>
+                    </div>
+                    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 relative z-10">
+                        <div class="flex items-center space-x-6">
+                            <span class="font-mono text-xl sm:text-2xl text-accent font-black">02</span>
+                            <div>
+                                <h3 class="text-2xl sm:text-3xl font-extrabold uppercase group-hover:text-accent transition-colors">EDUCATIONAL CONTENT</h3>
+                                <p class="text-neutral-400 text-sm mt-1">Turning complex ideas and tutorials into snackable visual lessons that stick.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center space-x-3 font-mono text-xs text-neutral-500">
+                            <span>00:24</span>
+                            <span class="w-2 h-2 rounded-full bg-accent"></span>
+                            <span class="text-neutral-300">YOUTUBE / MASTERY</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Category 03 -->
+                <div class="group relative bg-charcoal border border-neutral-800 hover:border-accent/60 rounded-2xl p-6 sm:p-8 transition-all duration-300 cursor-pointer overflow-hidden" onclick="openVideoModal('https://www.w3schools.com/html/mov_bbb.mp4', 'Podcast Clips Editing')">
+                    <div class="absolute right-6 top-1/2 -translate-y-1/2 hidden lg:flex items-center space-x-3 opacity-0 group-hover:opacity-100 transition-opacity">
+                        <span class="font-mono text-xs text-accent">PREVIEW REEL</span>
+                        <div class="w-12 h-12 rounded-full bg-accent text-black flex items-center justify-center font-bold">
+                            <i class="fa-solid fa-play"></i>
+                        </div>
+                    </div>
+                    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 relative z-10">
+                        <div class="flex items-center space-x-6">
+                            <span class="font-mono text-xl sm:text-2xl text-accent font-black">03</span>
+                            <div>
+                                <h3 class="text-2xl sm:text-3xl font-extrabold uppercase group-hover:text-accent transition-colors">PODCAST CLIPS</h3>
+                                <p class="text-neutral-400 text-sm mt-1">Extracting golden nuggets from hour-long conversations and packaging them for viral reach.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center space-x-3 font-mono text-xs text-neutral-500">
+                            <span>00:32</span>
+                            <span class="w-2 h-2 rounded-full bg-accent"></span>
+                            <span class="text-neutral-300">INTERVIEWS / HIGHLIGHTS</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Category 04 -->
+                <div class="group relative bg-charcoal border border-neutral-800 hover:border-accent/60 rounded-2xl p-6 sm:p-8 transition-all duration-300 cursor-pointer overflow-hidden" onclick="openVideoModal('https://www.w3schools.com/html/mov_bbb.mp4', 'Social Media Content Editing')">
+                    <div class="absolute right-6 top-1/2 -translate-y-1/2 hidden lg:flex items-center space-x-3 opacity-0 group-hover:opacity-100 transition-opacity">
+                        <span class="font-mono text-xs text-accent">PREVIEW REEL</span>
+                        <div class="w-12 h-12 rounded-full bg-accent text-black flex items-center justify-center font-bold">
+                            <i class="fa-solid fa-play"></i>
+                        </div>
+                    </div>
+                    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 relative z-10">
+                        <div class="flex items-center space-x-6">
+                            <span class="font-mono text-xl sm:text-2xl text-accent font-black">04</span>
+                            <div>
+                                <h3 class="text-2xl sm:text-3xl font-extrabold uppercase group-hover:text-accent transition-colors">SOCIAL MEDIA CONTENT</h3>
+                                <p class="text-neutral-400 text-sm mt-1">Fast-paced, pattern-interrupt edits engineered for maximum algorithm distribution.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center space-x-3 font-mono text-xs text-neutral-500">
+                            <span>00:15</span>
+                            <span class="w-2 h-2 rounded-full bg-accent"></span>
+                            <span class="text-neutral-300">VIRAL HOOKS / SHORTS</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- SECTION 4 — THE PORTFOLIO (THE WORK) -->
+    <section id="work" class="py-24 bg-charcoal border-b border-neutral-800">
+        <div class="max-w-7xl mx-auto px-6">
+            
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-16">
+                <div class="space-y-4">
+                    <span class="font-mono text-xs text-accent uppercase tracking-widest px-3 py-1 bg-neutral-900 border border-neutral-800 rounded">SECTION 04 / PORTFOLIO</span>
+                    <h2 class="text-3xl sm:text-5xl font-black uppercase tracking-tight">THE WORK</h2>
+                </div>
+                <p class="text-neutral-400 max-w-sm mt-4 md:mt-0 text-sm">
+                    Selected client cuts and high-performing talking-head edits. Click any project to launch the player.
+                </p>
+            </div>
+
+            <!-- Asymmetrical Grid Layout -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-6">
+                
+                <!-- Project 01 (Large span) -->
+                <div class="lg:col-span-7 group relative bg-dark rounded-2xl overflow-hidden border border-neutral-800 hover:border-accent/50 transition-all duration-300 cursor-pointer" onclick="openVideoModal('https://www.w3schools.com/html/mov_bbb.mp4', 'Project 01: Tech Founder Keynote')">
+                    <div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105 opacity-60" style="background-image: url('https://placehold.co/900x600/151515/ccff00?text=Project+01+-+Talking+Head');">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent"></div>
+                    </div>
+                    
+                    <div class="relative z-10 p-8 h-[400px] flex flex-col justify-between">
+                        <div class="flex justify-between items-center">
+                            <span class="px-3 py-1 rounded bg-black/80 backdrop-blur-md border border-neutral-800 font-mono text-xs text-accent">PROJECT 01</span>
+                            <span class="font-mono text-xs text-neutral-400">TALKING HEAD</span>
+                        </div>
+                        
+                        <div class="space-y-2">
+                            <div class="w-12 h-12 rounded-full bg-accent text-black flex items-center justify-center text-lg font-bold shadow-xl group-hover:scale-110 transition-transform mb-4">
+                                <i class="fa-solid fa-play ml-0.5"></i>
+                            </div>
+                            <h3 class="text-2xl sm:text-3xl font-extrabold uppercase">THE 7-FIGURE FOUNDER BREAKDOWN</h3>
+                            <p class="text-neutral-400 text-sm max-w-md">Dynamic subtitles, sound design, and strategic B-roll inserts for a top fintech creator.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 02 (Smaller span) -->
+                <div class="lg:col-span-5 group relative bg-dark rounded-2xl overflow-hidden border border-neutral-800 hover:border-accent/50 transition-all duration-300 cursor-pointer" onclick="openVideoModal('https://www.w3schools.com/html/mov_bbb.mp4', 'Project 02: Personal Brand Masterclass')">
+                    <div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105 opacity-60" style="background-image: url('https://placehold.co/600x600/151515/ccff00?text=Project+02+-+Personal+Brand');">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent"></div>
+                    </div>
+                    
+                    <div class="relative z-10 p-8 h-[400px] flex flex-col justify-between">
+                        <div class="flex justify-between items-center">
+                            <span class="px-3 py-1 rounded bg-black/80 backdrop-blur-md border border-neutral-800 font-mono text-xs text-accent">PROJECT 02</span>
+                            <span class="font-mono text-xs text-neutral-400">PERSONAL BRAND</span>
+                        </div>
+                        
+                        <div class="space-y-2">
+                            <div class="w-12 h-12 rounded-full bg-accent text-black flex items-center justify-center text-lg font-bold shadow-xl group-hover:scale-110 transition-transform mb-4">
+                                <i class="fa-solid fa-play ml-0.5"></i>
+                            </div>
+                            <h3 class="text-2xl font-extrabold uppercase">AUTHORITY BUILDING REELS</h3>
+                            <p class="text-neutral-400 text-sm">Clean aesthetic, punch-in cuts, and retention optimization.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 03 (Smaller span) -->
+                <div class="lg:col-span-5 group relative bg-dark rounded-2xl overflow-hidden border border-neutral-800 hover:border-accent/50 transition-all duration-300 cursor-pointer" onclick="openVideoModal('https://www.w3schools.com/html/mov_bbb.mp4', 'Project 03: Educational Deep Dive')">
+                    <div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105 opacity-60" style="background-image: url('https://placehold.co/600x600/151515/ccff00?text=Project+03+-+Educational');">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent"></div>
+                    </div>
+                    
+                    <div class="relative z-10 p-8 h-[400px] flex flex-col justify-between">
+                        <div class="flex justify-between items-center">
+                            <span class="px-3 py-1 rounded bg-black/80 backdrop-blur-md border border-neutral-800 font-mono text-xs text-accent">PROJECT 03</span>
+                            <span class="font-mono text-xs text-neutral-400">EDUCATIONAL</span>
+                        </div>
+                        
+                        <div class="space-y-2">
+                            <div class="w-12 h-12 rounded-full bg-accent text-black flex items-center justify-center text-lg font-bold shadow-xl group-hover:scale-110 transition-transform mb-4">
+                                <i class="fa-solid fa-play ml-0.5"></i>
+                            </div>
+                            <h3 class="text-2xl font-extrabold uppercase">MASTERING SYSTEM DESIGN</h3>
+                            <p class="text-neutral-400 text-sm">Visualizing technical concepts with smooth transitions and pacing.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 04 (Large span) -->
+                <div class="lg:col-span-7 group relative bg-dark rounded-2xl overflow-hidden border border-neutral-800 hover:border-accent/50 transition-all duration-300 cursor-pointer" onclick="openVideoModal('https://www.w3schools.com/html/mov_bbb.mp4', 'Project 04: Podcast Viral Clips')">
+                    <div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105 opacity-60" style="background-image: url('https://placehold.co/900x600/151515/ccff00?text=Project+04+-+Podcast+Clips');">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent"></div>
+                    </div>
+                    
+                    <div class="relative z-10 p-8 h-[400px] flex flex-col justify-between">
+                        <div class="flex justify-between items-center">
+                            <span class="px-3 py-1 rounded bg-black/80 backdrop-blur-md border border-neutral-800 font-mono text-xs text-accent">PROJECT 04</span>
+                            <span class="font-mono text-xs text-neutral-400">PODCAST</span>
+                        </div>
+                        
+                        <div class="space-y-2">
+                            <div class="w-12 h-12 rounded-full bg-accent text-black flex items-center justify-center text-lg font-bold shadow-xl group-hover:scale-110 transition-transform mb-4">
+                                <i class="fa-solid fa-play ml-0.5"></i>
+                            </div>
+                            <h3 class="text-2xl sm:text-3xl font-extrabold uppercase">THE SILICON VALLEY PODCAST HIGHLIGHTS</h3>
+                            <p class="text-neutral-400 text-sm max-w-md">Multi-cam switching, color grading, and viral hook framing.</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- SECTION 5 — THE CREATOR SIDE -->
+    <section id="creator" class="py-24 bg-dark border-b border-neutral-800 overflow-hidden">
+        <div class="max-w-7xl mx-auto px-6">
+            
+            <div class="text-center max-w-2xl mx-auto space-y-4 mb-16">
+                <span class="font-mono text-xs text-accent uppercase tracking-widest px-3 py-1 bg-neutral-900 border border-neutral-800 rounded">SECTION 05 / BOTH SIDES OF THE CAMERA</span>
+                <h2 class="text-3xl sm:text-5xl font-black uppercase tracking-tight">I'M ALSO THE PERSON IN FRONT OF THE CAMERA.</h2>
+                <p class="text-neutral-400 text-base sm:text-lg">
+                    I don't just edit content. I create it too. That means I understand hooks, audience psychology, retention curves, and pacing from personal experience.
+                </p>
+            </div>
+
+            <!-- Creator Mode Strip (TikTok style vertical cards) -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                
+                <!-- Card 1 -->
+                <div class="group relative aspect-[9/16] bg-charcoal rounded-2xl border border-neutral-800 overflow-hidden cursor-pointer" onclick="openVideoModal('https://www.w3schools.com/html/mov_bbb.mp4', 'Creator Mode: Hook Psychology')">
+                    <div class="absolute inset-0 bg-cover bg-center opacity-60 group-hover:scale-105 transition-transform duration-500" style="background-image: url('https://placehold.co/400x711/1c1c1c/ccff00?text=Creator+Mode+1');">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-black/40"></div>
+                    </div>
+                    <div class="absolute top-4 left-4">
+                        <span class="px-2.5 py-1 bg-accent text-black font-mono text-[10px] font-bold rounded">CREATOR MODE</span>
+                    </div>
+                    <div class="absolute bottom-4 left-4 right-4 space-y-2">
+                        <span class="text-xs font-mono text-accent">#AUDIENCEPSYCHOLOGY</span>
+                        <h4 class="font-bold text-lg uppercase leading-snug">Why 90% of videos fail in the first 3 seconds</h4>
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="group relative aspect-[9/16] bg-charcoal rounded-2xl border border-neutral-800 overflow-hidden cursor-pointer" onclick="openVideoModal('https://www.w3schools.com/html/mov_bbb.mp4', 'Creator Mode: Editing Workflow')">
+                    <div class="absolute inset-0 bg-cover bg-center opacity-60 group-hover:scale-105 transition-transform duration-500" style="background-image: url('https://placehold.co/400x711/1c1c1c/ccff00?text=Creator+Mode+2');">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-black/40"></div>
+                    </div>
+                    <div class="absolute top-4 left-4">
+                        <span class="px-2.5 py-1 bg-accent text-black font-mono text-[10px] font-bold rounded">CREATOR MODE</span>
+                    </div>
+                    <div class="absolute bottom-4 left-4 right-4 space-y-2">
+                        <span class="text-xs font-mono text-accent">#STORYTELLING</span>
+                        <h4 class="font-bold text-lg uppercase leading-snug">How I script & edit my own viral shorts</h4>
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="group relative aspect-[9/16] bg-charcoal rounded-2xl border border-neutral-800 overflow-hidden cursor-pointer" onclick="openVideoModal('https://www.w3schools.com/html/mov_bbb.mp4', 'Creator Mode: Retention Secrets')">
+                    <div class="absolute inset-0 bg-cover bg-center opacity-60 group-hover:scale-105 transition-transform duration-500" style="background-image: url('https://placehold.co/400x711/1c1c1c/ccff00?text=Creator+Mode+3');">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-black/40"></div>
+                    </div>
+                    <div class="absolute top-4 left-4">
+                        <span class="px-2.5 py-1 bg-accent text-black font-mono text-[10px] font-bold rounded">CREATOR MODE</span>
+                    </div>
+                    <div class="absolute bottom-4 left-4 right-4 space-y-2">
+                        <span class="text-xs font-mono text-accent">#RETENTION</span>
+                        <h4 class="font-bold text-lg uppercase leading-snug">The secret to keeping viewers until the very last frame</h4>
+                    </div>
+                </div>
+
+                <!-- Card 4 -->
+                <div class="group relative aspect-[9/16] bg-charcoal rounded-2xl border border-neutral-800 overflow-hidden cursor-pointer" onclick="openVideoModal('https://www.w3schools.com/html/mov_bbb.mp4', 'Creator Mode: Behind the Scenes')">
+                    <div class="absolute inset-0 bg-cover bg-center opacity-60 group-hover:scale-105 transition-transform duration-500" style="background-image: url('https://placehold.co/400x711/1c1c1c/ccff00?text=Creator+Mode+4');">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-black/40"></div>
+                    </div>
+                    <div class="absolute top-4 left-4">
+                        <span class="px-2.5 py-1 bg-accent text-black font-mono text-[10px] font-bold rounded">CREATOR MODE</span>
+                    </div>
+                    <div class="absolute bottom-4 left-4 right-4 space-y-2">
+                        <span class="text-xs font-mono text-accent">#WORKFLOW</span>
+                        <h4 class="font-bold text-lg uppercase leading-snug">Inside my digital editing room setup</h4>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- SECTION 6 — THE 3-SECOND RULE -->
+    <section class="py-24 bg-charcoal border-b border-neutral-800 relative overflow-hidden text-center">
+        <div class="absolute inset-0 opacity-5 timeline-grid pointer-events-none"></div>
+
+        <div class="max-w-4xl mx-auto px-6 relative z-10 space-y-8">
+            <span class="font-mono text-xs text-accent uppercase tracking-widest px-3 py-1 bg-neutral-900 border border-neutral-800 rounded">SECTION 06 / THE RULE</span>
+            
+            <h2 class="text-4xl sm:text-7xl font-black uppercase tracking-tight">
+                YOU HAVE <br>
+                <span class="text-accent underline decoration-white underline-offset-8">3 SECONDS.</span>
+            </h2>
+
+            <!-- Animated Countdown Display -->
+            <div class="flex justify-center items-center space-x-6 py-6 font-mono font-black text-5xl sm:text-7xl text-neutral-500">
+                <span class="text-neutral-700 animate-pulse">3</span>
+                <span class="text-neutral-400">2</span>
+                <span class="text-accent scale-110">1</span>
+            </div>
+
+            <div class="space-y-4 max-w-xl mx-auto">
+                <h3 class="text-3xl sm:text-4xl font-extrabold uppercase text-white">MAKE THEM COUNT.</h3>
+                <p class="text-neutral-400 text-base sm:text-lg">
+                    Your audience doesn't owe you their attention. If your opening doesn't disrupt their scroll, the rest of the video doesn't matter.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 7 — EDITING PHILOSOPHY -->
+    <section id="philosophy" class="py-24 bg-dark border-b border-neutral-800">
+        <div class="max-w-7xl mx-auto px-6">
+            
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+                
+                <div class="lg:col-span-5 space-y-6 lg:sticky lg:top-32">
+                    <span class="font-mono text-xs text-accent uppercase tracking-widest px-3 py-1 bg-neutral-900 border border-neutral-800 rounded">SECTION 07 / PHILOSOPHY</span>
+                    <h2 class="text-3xl sm:text-5xl font-black uppercase tracking-tight">HOW I THINK ABOUT AN EDIT.</h2>
+                    <p class="text-neutral-400 text-base">
+                        Every cut is intentional. Every transition serves the retention curve. Here is the framework behind every project that leaves my editing room.
+                    </p>
+                </div>
+
+                <!-- Vertical Timeline Sequence -->
+                <div class="lg:col-span-7 space-y-8 relative">
+                    <!-- Glowing Line -->
+                    <div class="absolute left-6 top-6 bottom-6 w-0.5 bg-gradient-to-b from-accent via-accent/50 to-neutral-800 hidden sm:block"></div>
+
+                    <!-- Step 01 -->
+                    <div class="relative bg-charcoal border border-neutral-800 p-6 sm:p-8 rounded-2xl space-y-3 sm:ml-12">
+                        <div class="absolute -left-12 top-8 w-6 h-6 rounded-full bg-accent text-black font-mono font-bold text-xs items-center justify-center hidden sm:flex">01</div>
+                        <div class="font-mono text-xs text-accent">STEP 01</div>
+                        <h3 class="text-2xl font-bold uppercase">HOOK</h3>
+                        <p class="text-neutral-400 text-sm">Give them an undeniable reason to stay. Eliminate all fluff at the start and drop straight into the core value or curiosity gap.</p>
+                    </div>
+
+                    <!-- Step 02 -->
+                    <div class="relative bg-charcoal border border-neutral-800 p-6 sm:p-8 rounded-2xl space-y-3 sm:ml-12">
+                        <div class="absolute -left-12 top-8 w-6 h-6 rounded-full bg-accent text-black font-mono font-bold text-xs items-center justify-center hidden sm:flex">02</div>
+                        <div class="font-mono text-xs text-accent">STEP 02</div>
+                        <h3 class="text-2xl font-bold uppercase">PACING</h3>
+                        <p class="text-neutral-400 text-sm">Cut the parts that don't earn attention. Breathe life into breaths, pauses, and dead air without making it feel rushed.</p>
+                    </div>
+
+                    <!-- Step 03 -->
+                    <div class="relative bg-charcoal border border-neutral-800 p-6 sm:p-8 rounded-2xl space-y-3 sm:ml-12">
+                        <div class="absolute -left-12 top-8 w-6 h-6 rounded-full bg-accent text-black font-mono font-bold text-xs items-center justify-center hidden sm:flex">03</div>
+                        <div class="font-mono text-xs text-accent">STEP 03</div>
+                        <h3 class="text-2xl font-bold uppercase">STORY</h3>
+                        <p class="text-neutral-400 text-sm">Make every second move the idea forward. Structure the narrative so the viewer's curiosity compounds until the end.</p>
+                    </div>
+
+                    <!-- Step 04 -->
+                    <div class="relative bg-charcoal border border-neutral-800 p-6 sm:p-8 rounded-2xl space-y-3 sm:ml-12">
+                        <div class="absolute -left-12 top-8 w-6 h-6 rounded-full bg-accent text-black font-mono font-bold text-xs items-center justify-center hidden sm:flex">04</div>
+                        <div class="font-mono text-xs text-accent">STEP 04</div>
+                        <h3 class="text-2xl font-bold uppercase">VISUALS</h3>
+                        <p class="text-neutral-400 text-sm">Make the message easier to understand with dynamic captions, sound effects, punch-in zooms, and relevant B-roll.</p>
+                    </div>
+
+                    <!-- Step 05 -->
+                    <div class="relative bg-charcoal border border-neutral-800 p-6 sm:p-8 rounded-2xl space-y-3 sm:ml-12">
+                        <div class="absolute -left-12 top-8 w-6 h-6 rounded-full bg-accent text-black font-mono font-bold text-xs items-center justify-center hidden sm:flex">05</div>
+                        <div class="font-mono text-xs text-accent">STEP 05</div>
+                        <h3 class="text-2xl font-bold uppercase">PAYOFF</h3>
+                        <p class="text-neutral-400 text-sm">Give the viewer a satisfying conclusion or a call-to-action that feels earned, not forced.</p>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- SECTION 8 — ABOUT -->
+    <section id="about" class="py-24 bg-charcoal border-b border-neutral-800">
+        <div class="max-w-7xl mx-auto px-6">
+            
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                
+                <div class="lg:col-span-6 space-y-6">
+                    <span class="font-mono text-xs text-accent uppercase tracking-widest px-3 py-1 bg-neutral-900 border border-neutral-800 rounded">SECTION 08 / ABOUT</span>
+                    <h2 class="text-3xl sm:text-5xl font-black uppercase tracking-tight">EDITOR. CREATOR. <br>STORYTELLER.</h2>
+                    <p class="text-neutral-300 text-lg leading-relaxed">
+                        "Mubbyspark is a video editor and content creator focused on turning talking-head footage into engaging short-form content. Because I create content myself, I approach every edit from both sides of the camera — the creator's message and the viewer's attention."
+                    </p>
+                    <div class="flex items-center space-x-6 pt-4 font-mono text-xs text-neutral-400">
+                        <div>
+                            <span class="text-accent font-bold text-xl block">10M+</span>
+                            <span>VIEWS GENERATED</span>
+                        </div>
+                        <div class="w-px h-8 bg-neutral-800"></div>
+                        <div>
+                            <span class="text-accent font-bold text-xl block">100%</span>
+                            <span>RETENTION FOCUSED</span>
+                        </div>
+                        <div class="w-px h-8 bg-neutral-800"></div>
+                        <div>
+                            <span class="text-accent font-bold text-xl block">48H</span>
+                            <span>AVERAGE TURNAROUND</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Visual Creator Badge Instead of Generic Photo -->
+                <div class="lg:col-span-6 flex justify-center">
+                    <div class="relative w-full max-w-md aspect-square bg-dark rounded-3xl border border-neutral-800 p-8 flex flex-col justify-between shadow-2xl overflow-hidden group">
+                        <div class="absolute inset-0 bg-cover bg-center opacity-40 group-hover:scale-105 transition-transform duration-700" style="background-image: url('https://placehold.co/600x600/151515/ccff00?text=Mubbyspark+Studio');">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent"></div>
+                        </div>
+                        <div class="relative z-10 flex justify-between items-center">
+                            <span class="font-mono text-xs text-accent">DIGITAL EDITING ROOM</span>
+                            <span class="w-3 h-3 rounded-full bg-accent animate-ping"></span>
+                        </div>
+                        <div class="relative z-10 space-y-2">
+                            <h3 class="text-3xl font-black uppercase">MUBBYSPARK</h3>
+                            <p class="text-neutral-400 font-mono text-xs">Talking-Head Video Editor × Content Creator</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- SECTION 9 — CTA -->
+    <section id="contact" class="py-24 bg-dark relative overflow-hidden border-b border-neutral-800 text-center">
+        <div class="absolute inset-0 opacity-5 timeline-grid pointer-events-none"></div>
+
+        <div class="max-w-4xl mx-auto px-6 relative z-10 space-y-8">
+            <span class="font-mono text-xs text-accent uppercase tracking-widest px-3 py-1 bg-neutral-900 border border-neutral-800 rounded">SECTION 09 / LET'S TALK</span>
+            
+            <h2 class="text-4xl sm:text-7xl font-black uppercase tracking-tight">
+                GOT FOOTAGE?<br>
+                <span class="text-accent">LET'S TURN IT INTO SOMETHING WORTH WATCHING.</span>
+            </h2>
+
+            <p class="text-neutral-400 text-lg max-w-xl mx-auto">
+                Ready to upgrade your talking-head content and scale your personal brand? Send over your raw files and let's get to work.
+            </p>
+
+            <div class="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-4 pt-4">
+                <a href="mailto:contact@mubbyspark.com" class="w-full sm:w-auto px-8 py-4 bg-accent text-black font-mono text-sm font-bold uppercase tracking-wider rounded hover:bg-accentHover transition-all flex items-center justify-center space-x-2 glow-accent">
+                    <span>START A PROJECT</span>
+                    <i class="fa-solid fa-arrow-right"></i>
+                </a>
+                <a href="#work" class="w-full sm:w-auto px-8 py-4 bg-neutral-900 hover:bg-neutral-800 text-white border border-neutral-700 font-mono text-sm font-semibold uppercase tracking-wider rounded transition-colors text-center">
+                    SEE THE WORK
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-charcoal py-16 border-t border-neutral-800">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-8 mb-12">
+                <div>
+                    <span class="font-extrabold text-xl uppercase tracking-wider block">MUBBYSPARK</span>
+                    <span class="text-xs text-accent font-mono uppercase tracking-widest mt-1 block">Talking-Head Video Editor × Content Creator</span>
+                </div>
+
+                <!-- Social Links -->
+                <div class="flex flex-wrap gap-6 font-mono text-xs uppercase tracking-wider">
+                    <a href="https://tiktok.com" target="_blank" class="text-neutral-400 hover:text-accent transition-colors">TikTok</a>
+                    <a href="https://instagram.com" target="_blank" class="text-neutral-400 hover:text-accent transition-colors">Instagram</a>
+                    <a href="https://linkedin.com" target="_blank" class="text-neutral-400 hover:text-accent transition-colors">LinkedIn</a>
+                    <a href="https://youtube.com" target="_blank" class="text-neutral-400 hover:text-accent transition-colors">YouTube</a>
+                    <a href="mailto:contact@mubbyspark.com" class="text-neutral-400 hover:text-accent transition-colors">Email</a>
+                </div>
+            </div>
+
+            <div class="border-t border-neutral-800 pt-8 flex flex-col sm:flex-row justify-between items-center text-xs font-mono text-neutral-500">
+                <p>&copy; 2026 MUBBYSPARK. ALL RIGHTS RESERVED.</p>
+                <p class="mt-4 sm:mt-0 text-accent">DIGITAL EDITING ROOM v4.2</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- VIDEO MODAL PLAYER -->
+    <div id="video-modal" class="fixed inset-0 z-50 hidden bg-black/95 backdrop-blur-xl flex items-center justify-center p-4">
+        <div class="relative w-full max-w-4xl bg-cardBg rounded-2xl border border-neutral-800 overflow-hidden shadow-2xl">
+            <!-- Modal Header -->
+            <div class="flex items-center justify-between px-6 py-4 border-b border-neutral-800 bg-dark">
+                <div class="flex items-center space-x-2 font-mono text-xs text-accent">
+                    <span class="w-2 h-2 rounded-full bg-red-500 animate-pulse"></span>
+                    <span id="modal-title">PLAYING PREVIEW</span>
+                </div>
+                <button onclick="closeVideoModal()" class="text-neutral-400 hover:text-white text-xl p-1">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+            <!-- Video Container -->
+            <div class="relative aspect-video bg-black flex items-center justify-center">
+                <video id="modal-video-element" controls autoplay class="w-full h-full object-contain">
+                    <source src="" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+        </div>
+    </div>
+
+    <!-- INTERACTIVE JAVASCRIPT -->
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        // Video Modal Functionality
+        const videoModal = document.getElementById('video-modal');
+        const modalVideoElement = document.getElementById('modal-video-element');
+        const modalTitle = document.getElementById('modal-title');
+
+        function openVideoModal(videoUrl, titleText) {
+            modalTitle.textContent = titleText.toUpperCase();
+            modalVideoElement.src = videoUrl;
+            videoModal.classList.remove('hidden');
+            modalVideoElement.play().catch(e => console.log("Autoplay prevented:", e));
+        }
+
+        function closeVideoModal() {
+            modalVideoElement.pause();
+            modalVideoElement.src = "";
+            videoModal.classList.add('hidden');
+        }
+
+        // Close modal on background click
+        videoModal.addEventListener('click', (e) => {
+            if (e.target === videoModal) {
+                closeVideoModal();
+            }
+        });
+
+        // Close modal on Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                closeVideoModal();
+            }
+        });
+    </script>
+</body>
+</html>
