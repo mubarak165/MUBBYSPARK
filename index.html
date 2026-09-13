@@ -173,7 +173,7 @@
 
                 <!-- Right Hero Reel Card (9:16 vertical mockup) -->
                 <div class="lg:col-span-5 flex justify-center">
-                    <div class="relative w-full max-w-[320px] aspect-[9/16] bg-cardBg rounded-2xl border border-neutral-800 overflow-hidden shadow-2xl group cursor-pointer" onclick="openVideoModal('https://www.w3schools.com/html/mov_bbb.mp4', 'Hero Featured Reel')">
+                   <div class="relative w-full max-w-[320px] aspect-[9/16] bg-cardBg rounded-2xl border border-neutral-800 overflow-hidden shadow-2xl group cursor-pointer" onclick="openVideoModal('https://www.youtube.com/embed/LiagJneNTvI', 'Hero Featured Reel')">
                         
                         <!-- Poster / Simulated Video Background -->
                         <div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105" style="background-image: url('https://placehold.co/600x1066/1a1a1a/ccff00?text=MUBBYSPARK+SHOWREEL');">
@@ -875,5 +875,29 @@
             }
         });
     </script>
+<!-- Video Modal Popup -->
+<div id="videoModal" class="fixed inset-0 z-50 hidden bg-black/80 backdrop-blur-md flex items-center justify-center p-4">
+    <div class="relative w-full max-w-4xl aspect-video bg-neutral-900 rounded-2xl overflow-hidden border border-neutral-800 shadow-2xl">
+        <button onclick="closeVideoModal()" class="absolute top-4 right-4 z-20 bg-black/70 text-white w-10 h-10 rounded-full flex items-center justify-center hover:bg-accent hover:text-black transition cursor-pointer">
+            <i class="fa-solid fa-xmark"></i>
+        </button>
+        <iframe id="modalIframe" class="w-full h-full" src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+</div>
+
+<script>
+    function openVideoModal(url, title) {
+        const modal = document.getElementById('videoModal');
+        const iframe = document.getElementById('modalIframe');
+        iframe.src = url + '?autoplay=1';
+        modal.classList.remove('hidden');
+    }
+    function closeVideoModal() {
+        const modal = document.getElementById('videoModal');
+        const iframe = document.getElementById('modalIframe');
+        iframe.src = '';
+        modal.classList.add('hidden');
+    }
+</script>
 </body>
 </html>
