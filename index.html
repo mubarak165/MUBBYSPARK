@@ -171,53 +171,55 @@
                     </div>
                 </div>
 
-                <!-- Right Hero Reel Card (9:16 vertical mockup) -->
+                <!-- Right Hero Reel Card (9:16 vertical mockup with auto-fetched YouTube Thumbnail) -->
                 <div class="lg:col-span-5 flex justify-center">
-                   <div class="relative w-full max-w-[320px] aspect-[9/16] bg-cardBg rounded-2xl border border-neutral-800 overflow-hidden shadow-2xl group cursor-pointer" onclick="openVideoModal('https://www.youtube.com/embed/LiagJneNTvI', 'Hero Featured Reel')">
+                   <div class="youtube-inline-player relative w-full max-w-[320px] aspect-[9/16] bg-cardBg rounded-2xl border border-neutral-800 overflow-hidden shadow-2xl group cursor-pointer" data-youtube-id="LiagJneNTvI">
                         
-                        <!-- Poster / Simulated Video Background -->
-                        <div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105" style="background-image: url('https://placehold.co/600x1066/1a1a1a/ccff00?text=MUBBYSPARK+SHOWREEL');">
-                            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
-                        </div>
+                        <!-- Wrapper handling thumbnail image and overlays -->
+                        <div class="video-thumbnail-wrapper absolute inset-0 w-full h-full">
+                            <!-- YouTube Official Thumbnail Automatically Loaded -->
+                            <img src="https://img.youtube.com/vi/LiagJneNTvI/hqdefault.jpg" alt="Showreel Thumbnail" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent pointer-events-none"></div>
 
-                        <!-- Top Bar Timecode Overlay -->
-                        <div class="absolute top-4 left-4 right-4 flex justify-between items-center text-[10px] font-mono text-accent bg-black/60 px-3 py-1.5 rounded backdrop-blur-md border border-neutral-800">
-                            <span class="flex items-center space-x-1">
-                                <span class="w-1.5 h-1.5 rounded-full bg-red-500 animate-pulse"></span>
-                                <span>REC [PRORES]</span>
-                            </span>
-                            <span>00:00:24:12</span>
-                        </div>
+                            <!-- Top Bar Timecode Overlay -->
+                            <div class="absolute top-4 left-4 right-4 flex justify-between items-center text-[10px] font-mono text-accent bg-black/60 px-3 py-1.5 rounded backdrop-blur-md border border-neutral-800 z-10">
+                                <span class="flex items-center space-x-1">
+                                    <span class="w-1.5 h-1.5 rounded-full bg-red-500 animate-pulse"></span>
+                                    <span>REC [PRORES]</span>
+                                </span>
+                                <span>00:00:24:12</span>
+                            </div>
 
-                        <!-- Center Play Icon with Hover Reaction -->
-                        <div class="absolute inset-0 flex items-center justify-center">
-                            <div class="w-16 h-16 rounded-full bg-accent/90 text-black flex items-center justify-center text-xl shadow-2xl transform group-hover:scale-110 transition-transform">
-                                <i class="fa-solid fa-play ml-1"></i>
+                            <!-- Center Play Icon with Hover Reaction -->
+                            <div class="absolute inset-0 flex items-center justify-center z-10 pointer-events-none">
+                                <div class="w-16 h-16 rounded-full bg-accent/90 text-black flex items-center justify-center text-xl shadow-2xl transform group-hover:scale-110 transition-transform">
+                                    <i class="fa-solid fa-play ml-1"></i>
+                                </div>
                             </div>
-                        </div>
 
-                        <!-- Bottom Editing Waveform & Label -->
-                        <div class="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black via-black/70 to-transparent space-y-2">
-                            <div class="flex items-center justify-between text-xs font-mono">
-                                <span class="text-white font-bold">REEL_FINAL_V4.MP4</span>
-                                <span class="text-accent">60 FPS</span>
+                            <!-- Bottom Editing Waveform & Label -->
+                            <div class="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black via-black/70 to-transparent space-y-2 z-10 pointer-events-none">
+                                <div class="flex items-center justify-between text-xs font-mono">
+                                    <span class="text-white font-bold">REEL_FINAL_V4.MP4</span>
+                                    <span class="text-accent">60 FPS</span>
+                                </div>
+                                <!-- Mini Waveform -->
+                                <div class="flex items-center space-x-0.5 h-6">
+                                    <div class="w-1 bg-accent/40 h-3 rounded-full"></div>
+                                    <div class="w-1 bg-accent h-6 rounded-full"></div>
+                                    <div class="w-1 bg-accent h-4 rounded-full"></div>
+                                    <div class="w-1 bg-accent/60 h-2 rounded-full"></div>
+                                    <div class="w-1 bg-accent h-5 rounded-full"></div>
+                                    <div class="w-1 bg-accent h-6 rounded-full"></div>
+                                    <div class="w-1 bg-accent/80 h-3 rounded-full"></div>
+                                    <div class="w-1 bg-accent h-4 rounded-full"></div>
+                                    <div class="w-1 bg-accent/40 h-2 rounded-full"></div>
+                                    <div class="w-1 bg-accent h-6 rounded-full"></div>
+                                    <div class="w-1 bg-accent h-5 rounded-full"></div>
+                                    <div class="w-1 bg-accent/60 h-3 rounded-full"></div>
+                                </div>
+                                <div class="text-[10px] text-neutral-400 font-mono">CLICK TO PLAY FROM YOUTUBE</div>
                             </div>
-                            <!-- Mini Waveform -->
-                            <div class="flex items-center space-x-0.5 h-6">
-                                <div class="w-1 bg-accent/40 h-3 rounded-full"></div>
-                                <div class="w-1 bg-accent h-6 rounded-full"></div>
-                                <div class="w-1 bg-accent h-4 rounded-full"></div>
-                                <div class="w-1 bg-accent/60 h-2 rounded-full"></div>
-                                <div class="w-1 bg-accent h-5 rounded-full"></div>
-                                <div class="w-1 bg-accent h-6 rounded-full"></div>
-                                <div class="w-1 bg-accent/80 h-3 rounded-full"></div>
-                                <div class="w-1 bg-accent h-4 rounded-full"></div>
-                                <div class="w-1 bg-accent/40 h-2 rounded-full"></div>
-                                <div class="w-1 bg-accent h-6 rounded-full"></div>
-                                <div class="w-1 bg-accent h-5 rounded-full"></div>
-                                <div class="w-1 bg-accent/60 h-3 rounded-full"></div>
-                            </div>
-                            <div class="text-[10px] text-neutral-400 font-mono">HOVER TO PREVIEW • CLICK TO EXPAND</div>
                         </div>
 
                     </div>
@@ -843,6 +845,29 @@
             });
         });
 
+        // Inline YouTube Player for Hero Card
+        document.addEventListener("DOMContentLoaded", () => {
+            const inlinePlayer = document.querySelector(".youtube-inline-player");
+            if (inlinePlayer) {
+                inlinePlayer.addEventListener("click", function () {
+                    const videoId = this.getAttribute("data-youtube-id");
+                    const wrapper = this.querySelector(".video-thumbnail-wrapper");
+                    if (wrapper.querySelector("iframe")) return;
+
+                    wrapper.innerHTML = `
+                        <iframe 
+                            src="https://www.youtube.com/embed/${videoId}?autoplay=1&enablejsapi=1" 
+                            title="YouTube video player" 
+                            frameborder="0" 
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                            allowfullscreen
+                            style="width: 100%; height: 100%; position: absolute; top: 0; left: 0; border-radius: inherit;">
+                        </iframe>
+                    `;
+                });
+            }
+        });
+
         // Video Modal Functionality
         const videoModal = document.getElementById('video-modal');
         const modalVideoElement = document.getElementById('modal-video-element');
@@ -875,29 +900,5 @@
             }
         });
     </script>
-<!-- Video Modal Popup -->
-<div id="videoModal" class="fixed inset-0 z-50 hidden bg-black/80 backdrop-blur-md flex items-center justify-center p-4">
-    <div class="relative w-full max-w-4xl aspect-video bg-neutral-900 rounded-2xl overflow-hidden border border-neutral-800 shadow-2xl">
-        <button onclick="closeVideoModal()" class="absolute top-4 right-4 z-20 bg-black/70 text-white w-10 h-10 rounded-full flex items-center justify-center hover:bg-accent hover:text-black transition cursor-pointer">
-            <i class="fa-solid fa-xmark"></i>
-        </button>
-        <iframe id="modalIframe" class="w-full h-full" src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-    </div>
-</div>
-
-<script>
-    function openVideoModal(url, title) {
-        const modal = document.getElementById('videoModal');
-        const iframe = document.getElementById('modalIframe');
-        iframe.src = url + '?autoplay=1';
-        modal.classList.remove('hidden');
-    }
-    function closeVideoModal() {
-        const modal = document.getElementById('videoModal');
-        const iframe = document.getElementById('modalIframe');
-        iframe.src = '';
-        modal.classList.add('hidden');
-    }
-</script>
 </body>
 </html>
