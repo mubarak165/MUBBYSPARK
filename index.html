@@ -175,13 +175,10 @@
                 <div class="lg:col-span-5 flex justify-center">
                    <div class="youtube-inline-player relative w-full max-w-[320px] aspect-[9/16] bg-cardBg rounded-2xl border border-neutral-800 overflow-hidden shadow-2xl group cursor-pointer" data-youtube-id="LiagJneNTvI">
                         
-                        <!-- Wrapper handling thumbnail image and overlays -->
                         <div class="video-thumbnail-wrapper absolute inset-0 w-full h-full">
-                            <!-- YouTube Official Thumbnail Automatically Loaded -->
                             <img src="https://img.youtube.com/vi/LiagJneNTvI/hqdefault.jpg" alt="Showreel Thumbnail" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
                             <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent pointer-events-none"></div>
 
-                            <!-- Top Bar Timecode Overlay -->
                             <div class="absolute top-4 left-4 right-4 flex justify-between items-center text-[10px] font-mono text-accent bg-black/60 px-3 py-1.5 rounded backdrop-blur-md border border-neutral-800 z-10">
                                 <span class="flex items-center space-x-1">
                                     <span class="w-1.5 h-1.5 rounded-full bg-red-500 animate-pulse"></span>
@@ -190,33 +187,16 @@
                                 <span>00:00:24:12</span>
                             </div>
 
-                            <!-- Center Play Icon with Hover Reaction -->
                             <div class="absolute inset-0 flex items-center justify-center z-10 pointer-events-none">
                                 <div class="w-16 h-16 rounded-full bg-accent/90 text-black flex items-center justify-center text-xl shadow-2xl transform group-hover:scale-110 transition-transform">
                                     <i class="fa-solid fa-play ml-1"></i>
                                 </div>
                             </div>
 
-                            <!-- Bottom Editing Waveform & Label -->
                             <div class="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black via-black/70 to-transparent space-y-2 z-10 pointer-events-none">
                                 <div class="flex items-center justify-between text-xs font-mono">
                                     <span class="text-white font-bold">REEL_FINAL_V4.MP4</span>
                                     <span class="text-accent">60 FPS</span>
-                                </div>
-                                <!-- Mini Waveform -->
-                                <div class="flex items-center space-x-0.5 h-6">
-                                    <div class="w-1 bg-accent/40 h-3 rounded-full"></div>
-                                    <div class="w-1 bg-accent h-6 rounded-full"></div>
-                                    <div class="w-1 bg-accent h-4 rounded-full"></div>
-                                    <div class="w-1 bg-accent/60 h-2 rounded-full"></div>
-                                    <div class="w-1 bg-accent h-5 rounded-full"></div>
-                                    <div class="w-1 bg-accent h-6 rounded-full"></div>
-                                    <div class="w-1 bg-accent/80 h-3 rounded-full"></div>
-                                    <div class="w-1 bg-accent h-4 rounded-full"></div>
-                                    <div class="w-1 bg-accent/40 h-2 rounded-full"></div>
-                                    <div class="w-1 bg-accent h-6 rounded-full"></div>
-                                    <div class="w-1 bg-accent h-5 rounded-full"></div>
-                                    <div class="w-1 bg-accent/60 h-3 rounded-full"></div>
                                 </div>
                                 <div class="text-[10px] text-neutral-400 font-mono">CLICK TO PLAY FROM YOUTUBE</div>
                             </div>
@@ -229,7 +209,7 @@
         </div>
     </section>
 
-    <!-- SECTION 2 — THE EDIT -->
+    <!-- SECTION 2 — THE EDIT (UPDATED TO VERTICAL 9:16 WITH AUTO YOUTUBE THUMBNAILS) -->
     <section id="edit" class="py-24 bg-charcoal border-b border-neutral-800">
         <div class="max-w-7xl mx-auto px-6">
             
@@ -239,52 +219,73 @@
                 <p class="text-neutral-400 text-base sm:text-lg">Raw footage is only the beginning. See how ordinary talking-head recordings become magnetic short-form content.</p>
             </div>
 
-            <!-- Before/After Interactive Comparison Box -->
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center bg-dark p-6 sm:p-8 rounded-2xl border border-neutral-800 shadow-2xl">
+            <!-- Side-by-side vertical (9:16) YouTube interactive cards -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center justify-items-center max-w-4xl mx-auto bg-dark p-6 sm:p-10 rounded-2xl border border-neutral-800 shadow-2xl">
                 
-                <!-- RAW FOOTAGE SIDE -->
-                <div class="space-y-4">
+                <!-- RAW FOOTAGE SIDE (9:16 Vertical YouTube Card) -->
+                <div class="w-full max-w-[280px] space-y-4">
                     <div class="flex items-center justify-between font-mono text-xs">
                         <span class="text-red-400 font-bold tracking-wider flex items-center space-x-1.5">
                             <i class="fa-solid fa-triangle-exclamation"></i>
-                            <span>RAW FOOTAGE (BORING)</span>
+                            <span>RAW FOOTAGE</span>
                         </span>
-                        <span class="text-neutral-500">1080p • Flat Color • Dead Air</span>
                     </div>
 
-                    <div class="relative aspect-video bg-neutral-900 rounded-xl overflow-hidden border border-neutral-800 flex items-center justify-center group">
-                        <!-- Simulated Raw Video Still -->
-                        <div class="absolute inset-0 bg-cover bg-center grayscale opacity-50" style="background-image: url('https://placehold.co/800x450/222222/666666?text=Raw+Camera+Feed+-+No+Edits');"></div>
-                        <div class="relative z-10 text-center p-6 bg-black/70 backdrop-blur-sm rounded-lg border border-neutral-800">
-                            <p class="text-neutral-400 text-sm font-mono mb-2">"Uhm, so basically when you record a video..."</p>
-                            <span class="text-[11px] font-mono text-red-400 bg-red-950/50 px-2.5 py-1 rounded border border-red-900/50">Viewer Retention: 12%</span>
+                    <!-- YouTube Inline Player Card (Replace 'dQw4w9WgXcQ' with your desired Raw YouTube ID) -->
+                    <div class="youtube-inline-player relative w-full aspect-[9/16] bg-neutral-900 rounded-2xl border border-neutral-800 overflow-hidden shadow-xl group cursor-pointer" data-youtube-id="dQw4w9WgXcQ">
+                        <div class="video-thumbnail-wrapper absolute inset-0 w-full h-full">
+                            <img src="https://img.youtube.com/vi/dQw4w9WgXcQ/hqdefault.jpg" alt="Raw Thumbnail" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent pointer-events-none"></div>
+
+                            <div class="absolute top-3 left-3 right-3 flex justify-between items-center text-[10px] font-mono text-red-400 bg-black/70 px-2.5 py-1 rounded backdrop-blur-md border border-neutral-800 z-10">
+                                <span>UNEDITED</span>
+                                <span>1080P</span>
+                            </div>
+
+                            <div class="absolute inset-0 flex items-center justify-center z-10 pointer-events-none">
+                                <div class="w-14 h-14 rounded-full bg-red-500/90 text-white flex items-center justify-center text-lg shadow-xl transform group-hover:scale-110 transition-transform">
+                                    <i class="fa-solid fa-play ml-0.5"></i>
+                                </div>
+                            </div>
+
+                            <div class="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black via-black/80 to-transparent space-y-1 z-10 pointer-events-none">
+                                <p class="text-neutral-400 text-xs font-mono">"Uhm, so basically..."</p>
+                                <span class="text-[10px] font-mono text-red-400 bg-red-950/60 px-2 py-0.5 rounded border border-red-900/50 inline-block">Retention: 12%</span>
+                            </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- EDITED FOOTAGE SIDE -->
-                <div class="space-y-4">
+                <!-- EDITED FOOTAGE SIDE (9:16 Vertical YouTube Card) -->
+                <div class="w-full max-w-[280px] space-y-4">
                     <div class="flex items-center justify-between font-mono text-xs">
                         <span class="text-accent font-bold tracking-wider flex items-center space-x-1.5">
                             <i class="fa-solid fa-bolt"></i>
                             <span>EDITED BY MUBBYSPARK</span>
                         </span>
-                        <span class="text-accent">4K • Dynamic Captions • SFX • Pacing</span>
                     </div>
 
-                    <div class="relative aspect-video bg-neutral-900 rounded-xl overflow-hidden border border-accent/40 shadow-xl flex items-center justify-center group">
-                        <!-- Simulated Edited Video Still -->
-                        <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('https://placehold.co/800x450/111111/ccff00?text=Mubbyspark+Edit+-+Punch-In+%26+Captions');"></div>
-                        
-                        <!-- Simulated Captions Overlay -->
-                        <div class="absolute bottom-6 left-0 right-0 flex justify-center z-10 px-4">
-                            <div class="bg-black/90 border border-accent/60 px-4 py-2 rounded-lg shadow-2xl text-center">
-                                <span class="font-black text-accent text-lg sm:text-xl uppercase tracking-wider drop-shadow-[0_2px_10px_rgba(204,255,0,0.5)]">STOP LOSING VIEWERS IN 3 SECONDS!</span>
-                            </div>
-                        </div>
+                    <!-- YouTube Inline Player Card (Replace 'LiagJneNTvI' with your desired Edited YouTube ID) -->
+                    <div class="youtube-inline-player relative w-full aspect-[9/16] bg-neutral-900 rounded-2xl border border-accent/40 shadow-xl group cursor-pointer" data-youtube-id="LiagJneNTvI">
+                        <div class="video-thumbnail-wrapper absolute inset-0 w-full h-full">
+                            <img src="https://img.youtube.com/vi/LiagJneNTvI/hqdefault.jpg" alt="Edited Thumbnail" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent pointer-events-none"></div>
 
-                        <div class="absolute top-3 right-3 z-10">
-                            <span class="text-[11px] font-mono text-black bg-accent px-2.5 py-1 rounded font-bold shadow">Retention: 89%</span>
+                            <div class="absolute top-3 left-3 right-3 flex justify-between items-center text-[10px] font-mono text-accent bg-black/70 px-2.5 py-1 rounded backdrop-blur-md border border-neutral-800 z-10">
+                                <span>PRO CUT</span>
+                                <span>4K 60FPS</span>
+                            </div>
+
+                            <div class="absolute inset-0 flex items-center justify-center z-10 pointer-events-none">
+                                <div class="w-14 h-14 rounded-full bg-accent text-black flex items-center justify-center text-lg shadow-xl transform group-hover:scale-110 transition-transform">
+                                    <i class="fa-solid fa-play ml-0.5"></i>
+                                </div>
+                            </div>
+
+                            <div class="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black via-black/80 to-transparent space-y-1 z-10 pointer-events-none">
+                                <p class="text-accent text-xs font-bold uppercase">STOP LOSING VIEWERS!</p>
+                                <span class="text-[10px] font-mono text-black bg-accent px-2 py-0.5 rounded font-bold inline-block">Retention: 89%</span>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -315,7 +316,6 @@
                 </p>
             </div>
 
-            <!-- Categories List -->
             <div class="space-y-4">
                 
                 <!-- Category 01 -->
@@ -419,7 +419,7 @@
         </div>
     </section>
 
-    <!-- SECTION 4 — THE PORTFOLIO (THE WORK) -->
+    <!-- SECTION 4 — THE PORTFOLIO -->
     <section id="work" class="py-24 bg-charcoal border-b border-neutral-800">
         <div class="max-w-7xl mx-auto px-6">
             
@@ -433,10 +433,8 @@
                 </p>
             </div>
 
-            <!-- Asymmetrical Grid Layout -->
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-6">
                 
-                <!-- Project 01 (Large span) -->
                 <div class="lg:col-span-7 group relative bg-dark rounded-2xl overflow-hidden border border-neutral-800 hover:border-accent/50 transition-all duration-300 cursor-pointer" onclick="openVideoModal('https://www.w3schools.com/html/mov_bbb.mp4', 'Project 01: Tech Founder Keynote')">
                     <div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105 opacity-60" style="background-image: url('https://placehold.co/900x600/151515/ccff00?text=Project+01+-+Talking+Head');">
                         <div class="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent"></div>
@@ -458,7 +456,6 @@
                     </div>
                 </div>
 
-                <!-- Project 02 (Smaller span) -->
                 <div class="lg:col-span-5 group relative bg-dark rounded-2xl overflow-hidden border border-neutral-800 hover:border-accent/50 transition-all duration-300 cursor-pointer" onclick="openVideoModal('https://www.w3schools.com/html/mov_bbb.mp4', 'Project 02: Personal Brand Masterclass')">
                     <div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105 opacity-60" style="background-image: url('https://placehold.co/600x600/151515/ccff00?text=Project+02+-+Personal+Brand');">
                         <div class="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent"></div>
@@ -480,7 +477,6 @@
                     </div>
                 </div>
 
-                <!-- Project 03 (Smaller span) -->
                 <div class="lg:col-span-5 group relative bg-dark rounded-2xl overflow-hidden border border-neutral-800 hover:border-accent/50 transition-all duration-300 cursor-pointer" onclick="openVideoModal('https://www.w3schools.com/html/mov_bbb.mp4', 'Project 03: Educational Deep Dive')">
                     <div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105 opacity-60" style="background-image: url('https://placehold.co/600x600/151515/ccff00?text=Project+03+-+Educational');">
                         <div class="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent"></div>
@@ -502,7 +498,6 @@
                     </div>
                 </div>
 
-                <!-- Project 04 (Large span) -->
                 <div class="lg:col-span-7 group relative bg-dark rounded-2xl overflow-hidden border border-neutral-800 hover:border-accent/50 transition-all duration-300 cursor-pointer" onclick="openVideoModal('https://www.w3schools.com/html/mov_bbb.mp4', 'Project 04: Podcast Viral Clips')">
                     <div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105 opacity-60" style="background-image: url('https://placehold.co/900x600/151515/ccff00?text=Project+04+-+Podcast+Clips');">
                         <div class="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent"></div>
@@ -541,10 +536,8 @@
                 </p>
             </div>
 
-            <!-- Creator Mode Strip (TikTok style vertical cards) -->
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
                 
-                <!-- Card 1 -->
                 <div class="group relative aspect-[9/16] bg-charcoal rounded-2xl border border-neutral-800 overflow-hidden cursor-pointer" onclick="openVideoModal('https://www.w3schools.com/html/mov_bbb.mp4', 'Creator Mode: Hook Psychology')">
                     <div class="absolute inset-0 bg-cover bg-center opacity-60 group-hover:scale-105 transition-transform duration-500" style="background-image: url('https://placehold.co/400x711/1c1c1c/ccff00?text=Creator+Mode+1');">
                         <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-black/40"></div>
@@ -558,7 +551,6 @@
                     </div>
                 </div>
 
-                <!-- Card 2 -->
                 <div class="group relative aspect-[9/16] bg-charcoal rounded-2xl border border-neutral-800 overflow-hidden cursor-pointer" onclick="openVideoModal('https://www.w3schools.com/html/mov_bbb.mp4', 'Creator Mode: Editing Workflow')">
                     <div class="absolute inset-0 bg-cover bg-center opacity-60 group-hover:scale-105 transition-transform duration-500" style="background-image: url('https://placehold.co/400x711/1c1c1c/ccff00?text=Creator+Mode+2');">
                         <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-black/40"></div>
@@ -572,7 +564,6 @@
                     </div>
                 </div>
 
-                <!-- Card 3 -->
                 <div class="group relative aspect-[9/16] bg-charcoal rounded-2xl border border-neutral-800 overflow-hidden cursor-pointer" onclick="openVideoModal('https://www.w3schools.com/html/mov_bbb.mp4', 'Creator Mode: Retention Secrets')">
                     <div class="absolute inset-0 bg-cover bg-center opacity-60 group-hover:scale-105 transition-transform duration-500" style="background-image: url('https://placehold.co/400x711/1c1c1c/ccff00?text=Creator+Mode+3');">
                         <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-black/40"></div>
@@ -586,7 +577,6 @@
                     </div>
                 </div>
 
-                <!-- Card 4 -->
                 <div class="group relative aspect-[9/16] bg-charcoal rounded-2xl border border-neutral-800 overflow-hidden cursor-pointer" onclick="openVideoModal('https://www.w3schools.com/html/mov_bbb.mp4', 'Creator Mode: Behind the Scenes')">
                     <div class="absolute inset-0 bg-cover bg-center opacity-60 group-hover:scale-105 transition-transform duration-500" style="background-image: url('https://placehold.co/400x711/1c1c1c/ccff00?text=Creator+Mode+4');">
                         <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-black/40"></div>
@@ -617,7 +607,6 @@
                 <span class="text-accent underline decoration-white underline-offset-8">3 SECONDS.</span>
             </h2>
 
-            <!-- Animated Countdown Display -->
             <div class="flex justify-center items-center space-x-6 py-6 font-mono font-black text-5xl sm:text-7xl text-neutral-500">
                 <span class="text-neutral-700 animate-pulse">3</span>
                 <span class="text-neutral-400">2</span>
@@ -647,12 +636,9 @@
                     </p>
                 </div>
 
-                <!-- Vertical Timeline Sequence -->
                 <div class="lg:col-span-7 space-y-8 relative">
-                    <!-- Glowing Line -->
                     <div class="absolute left-6 top-6 bottom-6 w-0.5 bg-gradient-to-b from-accent via-accent/50 to-neutral-800 hidden sm:block"></div>
 
-                    <!-- Step 01 -->
                     <div class="relative bg-charcoal border border-neutral-800 p-6 sm:p-8 rounded-2xl space-y-3 sm:ml-12">
                         <div class="absolute -left-12 top-8 w-6 h-6 rounded-full bg-accent text-black font-mono font-bold text-xs items-center justify-center hidden sm:flex">01</div>
                         <div class="font-mono text-xs text-accent">STEP 01</div>
@@ -660,7 +646,6 @@
                         <p class="text-neutral-400 text-sm">Give them an undeniable reason to stay. Eliminate all fluff at the start and drop straight into the core value or curiosity gap.</p>
                     </div>
 
-                    <!-- Step 02 -->
                     <div class="relative bg-charcoal border border-neutral-800 p-6 sm:p-8 rounded-2xl space-y-3 sm:ml-12">
                         <div class="absolute -left-12 top-8 w-6 h-6 rounded-full bg-accent text-black font-mono font-bold text-xs items-center justify-center hidden sm:flex">02</div>
                         <div class="font-mono text-xs text-accent">STEP 02</div>
@@ -668,7 +653,6 @@
                         <p class="text-neutral-400 text-sm">Cut the parts that don't earn attention. Breathe life into breaths, pauses, and dead air without making it feel rushed.</p>
                     </div>
 
-                    <!-- Step 03 -->
                     <div class="relative bg-charcoal border border-neutral-800 p-6 sm:p-8 rounded-2xl space-y-3 sm:ml-12">
                         <div class="absolute -left-12 top-8 w-6 h-6 rounded-full bg-accent text-black font-mono font-bold text-xs items-center justify-center hidden sm:flex">03</div>
                         <div class="font-mono text-xs text-accent">STEP 03</div>
@@ -676,7 +660,6 @@
                         <p class="text-neutral-400 text-sm">Make every second move the idea forward. Structure the narrative so the viewer's curiosity compounds until the end.</p>
                     </div>
 
-                    <!-- Step 04 -->
                     <div class="relative bg-charcoal border border-neutral-800 p-6 sm:p-8 rounded-2xl space-y-3 sm:ml-12">
                         <div class="absolute -left-12 top-8 w-6 h-6 rounded-full bg-accent text-black font-mono font-bold text-xs items-center justify-center hidden sm:flex">04</div>
                         <div class="font-mono text-xs text-accent">STEP 04</div>
@@ -684,7 +667,6 @@
                         <p class="text-neutral-400 text-sm">Make the message easier to understand with dynamic captions, sound effects, punch-in zooms, and relevant B-roll.</p>
                     </div>
 
-                    <!-- Step 05 -->
                     <div class="relative bg-charcoal border border-neutral-800 p-6 sm:p-8 rounded-2xl space-y-3 sm:ml-12">
                         <div class="absolute -left-12 top-8 w-6 h-6 rounded-full bg-accent text-black font-mono font-bold text-xs items-center justify-center hidden sm:flex">05</div>
                         <div class="font-mono text-xs text-accent">STEP 05</div>
@@ -729,7 +711,6 @@
                     </div>
                 </div>
 
-                <!-- Visual Creator Badge Instead of Generic Photo -->
                 <div class="lg:col-span-6 flex justify-center">
                     <div class="relative w-full max-w-md aspect-square bg-dark rounded-3xl border border-neutral-800 p-8 flex flex-col justify-between shadow-2xl overflow-hidden group">
                         <div class="absolute inset-0 bg-cover bg-center opacity-40 group-hover:scale-105 transition-transform duration-700" style="background-image: url('https://placehold.co/600x600/151515/ccff00?text=Mubbyspark+Studio');">
@@ -788,7 +769,6 @@
                     <span class="text-xs text-accent font-mono uppercase tracking-widest mt-1 block">Talking-Head Video Editor × Content Creator</span>
                 </div>
 
-                <!-- Social Links -->
                 <div class="flex flex-wrap gap-6 font-mono text-xs uppercase tracking-wider">
                     <a href="https://tiktok.com" target="_blank" class="text-neutral-400 hover:text-accent transition-colors">TikTok</a>
                     <a href="https://instagram.com" target="_blank" class="text-neutral-400 hover:text-accent transition-colors">Instagram</a>
@@ -808,7 +788,6 @@
     <!-- VIDEO MODAL PLAYER -->
     <div id="video-modal" class="fixed inset-0 z-50 hidden bg-black/95 backdrop-blur-xl flex items-center justify-center p-4">
         <div class="relative w-full max-w-4xl bg-cardBg rounded-2xl border border-neutral-800 overflow-hidden shadow-2xl">
-            <!-- Modal Header -->
             <div class="flex items-center justify-between px-6 py-4 border-b border-neutral-800 bg-dark">
                 <div class="flex items-center space-x-2 font-mono text-xs text-accent">
                     <span class="w-2 h-2 rounded-full bg-red-500 animate-pulse"></span>
@@ -818,7 +797,6 @@
                     <i class="fa-solid fa-xmark"></i>
                 </button>
             </div>
-            <!-- Video Container -->
             <div class="relative aspect-video bg-black flex items-center justify-center">
                 <video id="modal-video-element" controls autoplay class="w-full h-full object-contain">
                     <source src="" type="video/mp4">
@@ -845,13 +823,21 @@
             });
         });
 
-        // Inline YouTube Player for Hero Card
+        // Inline YouTube Player Handler (Auto-loads thumbnails & plays on click for all .youtube-inline-player items)
         document.addEventListener("DOMContentLoaded", () => {
-            const inlinePlayer = document.querySelector(".youtube-inline-player");
-            if (inlinePlayer) {
-                inlinePlayer.addEventListener("click", function () {
-                    const videoId = this.getAttribute("data-youtube-id");
-                    const wrapper = this.querySelector(".video-thumbnail-wrapper");
+            const inlinePlayers = document.querySelectorAll(".youtube-inline-player");
+            
+            inlinePlayers.forEach(player => {
+                const videoId = player.getAttribute("data-youtube-id");
+                const wrapper = player.querySelector(".video-thumbnail-wrapper");
+                
+                // Automatically set the official YouTube high-res thumbnail based on data-youtube-id attribute!
+                const img = wrapper.querySelector("img");
+                if (img && videoId) {
+                    img.src = `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`;
+                }
+
+                player.addEventListener("click", function () {
                     if (wrapper.querySelector("iframe")) return;
 
                     wrapper.innerHTML = `
@@ -865,7 +851,7 @@
                         </iframe>
                     `;
                 });
-            }
+            });
         });
 
         // Video Modal Functionality
@@ -886,14 +872,12 @@
             videoModal.classList.add('hidden');
         }
 
-        // Close modal on background click
         videoModal.addEventListener('click', (e) => {
             if (e.target === videoModal) {
                 closeVideoModal();
             }
         });
 
-        // Close modal on Escape key
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape') {
                 closeVideoModal();
